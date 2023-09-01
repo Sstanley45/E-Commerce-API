@@ -13,8 +13,10 @@ import { createProduct,
   updateProduct,
   uploadImage
 } from '../controllers/productControllers.js'
-  
-router
+  import { getSingleProductReviews, } from '../controllers/reviewControllers.js'
+
+
+router 
   .route("/")
   .post(authenticateUser, unauthorizedPermissions('admin'), createProduct).get(getAllProducts)
 router
@@ -26,5 +28,7 @@ router
   .delete(authenticateUser, unauthorizedPermissions("admin"), deleteProduct)
   .patch(authenticateUser, unauthorizedPermissions("admin"), updateProduct);
   
+router.route('/:id/reviews').get(getSingleProductReviews);
+
  
-export default router;
+export default router; 

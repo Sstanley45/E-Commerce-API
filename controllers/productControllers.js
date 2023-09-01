@@ -21,13 +21,13 @@ const createProduct = async (req, res) => {
 };
 
 const getAllProducts = async (req, res) => {
-  const products = await ProductModel.find({});
+  const products = await ProductModel.find({})
   res.status(StatusCodes.OK).json({ products, count: products.length });
 };
 
 const getSingleProduct = async (req, res) => {
   const { id: productId } = req.params;
-  const product = await ProductModel.findOne({ _id: productId });
+  const product = await ProductModel.findOne({ _id: productId }).populate("reviews");
   if (!product) {
     throw new NotFoundError(`No product with id : ${productId}`);
   }

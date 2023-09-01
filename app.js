@@ -12,6 +12,8 @@ import notFound from './middleware/not-found.js';
 import authRouter from './routes/authRoutes.js'
 import userRouter from './routes/userRoutes.js'
 import productRouter from './routes/productRoutes.js'
+import reviewRouter from './routes/reviewRoutes.js';
+
 
 
 const port = process.env.PORT || 5000;
@@ -28,7 +30,7 @@ app.use(fileUpload())
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/users', userRouter); 
 app.use('/api/v1/products', productRouter);
-
+app.use('/api/v1/reviews', reviewRouter);
 
 app.get('/', (req, res) => {
     res.status(200).send('E-Commerce API')
